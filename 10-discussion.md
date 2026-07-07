@@ -186,4 +186,4 @@ Everything you have done in this practical is a step towards answering that broa
 
 ⬅️ **Previous**: [09 MAG quality assessment](09-mag-quality.md)
 
-🏠 **Return to**: [Metagenomics Practical](README.md)
+🏠 **Return to**: [Metagenomics Practical](index.md)
