@@ -1,4 +1,4 @@
-# 05 Community visualisation
+# 05 Community visualization
 
 > **Estimated time:** 25 minutes
 
