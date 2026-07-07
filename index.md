@@ -62,7 +62,7 @@ Everything you will do fits somewhere within these four questions.
 
 🧬 [04 Taxonomic classification](04-taxonomic-classification.md)
 
-🌳 [05 Community visualisation](05-community-visualization.md)
+🌳 [05 Community visualization](05-community-visualization.md)
 
 🧩 [06 Metagenome assembly](06-metagenome-assembly.md)
 
