@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1350" height="760" viewBox="0 0 1350 760">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#333"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-opacity="0.18"/>
+    </filter>
+    <style>
+      .title { font: 700 34px Arial, sans-serif; fill: #222; }
+      .subtitle { font: 400 18px Arial, sans-serif; fill: #555; }
+      .box { rx: 18; ry: 18; stroke: #2d3748; stroke-width: 2; filter: url(#shadow); }
+      .boxtitle { font: 700 19px Arial, sans-serif; fill: #111; }
+      .boxtext { font: 400 15px Arial, sans-serif; fill: #333; }
+      .label { font: 700 15px Arial, sans-serif; fill: #333; }
+      .small { font: 400 13px Arial, sans-serif; fill: #555; }
+      .arrow { stroke: #333; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .dashed { stroke: #666; stroke-width: 2.5; stroke-dasharray: 8 7; fill: none; marker-end: url(#arrow); }
+      .day { font: 700 20px Arial, sans-serif; fill: #2d3748; }
+    </style>
+  </defs>
+
+  <rect width="1350" height="760" fill="#ffffff"/>
+  <text x="675" y="55" text-anchor="middle" class="title">Metagenomics practical workflow</text>
+  <text x="675" y="84" text-anchor="middle" class="subtitle">From mixed-community DNA to taxonomic profiles, MAGs, and biological interpretation</text>
+
+  <text x="210" y="138" text-anchor="middle" class="day">Day 1 — Who is present?</text>
+  <text x="925" y="138" text-anchor="middle" class="day">Day 2 — What genomes can we reconstruct?</text>
+
+  <!-- input -->
+  <rect x="70" y="175" width="230" height="105" fill="#e8f1ff" class="box"/>
+  <text x="185" y="210" text-anchor="middle" class="boxtitle">Mock community DNA</text>
+  <text x="185" y="237" text-anchor="middle" class="boxtext">mixed genomes from</text>
+  <text x="185" y="258" text-anchor="middle" class="boxtext">multiple microorganisms</text>
+
+  <rect x="365" y="175" width="230" height="105" fill="#fff2cc" class="box"/>
+  <text x="480" y="210" text-anchor="middle" class="boxtitle">Shotgun reads</text>
+  <text x="480" y="237" text-anchor="middle" class="boxtext">paired-end FASTQ files</text>
+  <text x="480" y="258" text-anchor="middle" class="boxtext">read1.fq + read2.fq</text>
+
+  <path d="M300 228 C325 228 340 228 365 228" class="arrow"/>
+
+  <!-- day1 branch -->
+  <rect x="115" y="390" width="260" height="115" fill="#dcfce7" class="box"/>
+  <text x="245" y="425" text-anchor="middle" class="boxtitle">Taxonomic classification</text>
+  <text x="245" y="452" text-anchor="middle" class="boxtext">Kaiju assigns reads</text>
+  <text x="245" y="473" text-anchor="middle" class="boxtext">to taxa via proteins</text>
+  <text x="245" y="493" text-anchor="middle" class="small">Output: readset_kaiju.out</text>
+
+  <rect x="420" y="390" width="260" height="115" fill="#dcfce7" class="box"/>
+  <text x="550" y="425" text-anchor="middle" class="boxtitle">Community profile</text>
+  <text x="550" y="452" text-anchor="middle" class="boxtext">summaries by rank</text>
+  <text x="550" y="473" text-anchor="middle" class="boxtext">and Krona visualisation</text>
+  <text x="550" y="493" text-anchor="middle" class="small">Question: who is present?</text>
+
+  <path d="M480 280 C480 326 245 335 245 390" class="arrow"/>
+  <path d="M375 448 C395 448 405 448 420 448" class="arrow"/>
+
+  <!-- day2 path -->
+  <rect x="720" y="175" width="240" height="105" fill="#fde2e1" class="box"/>
+  <text x="840" y="210" text-anchor="middle" class="boxtitle">Metagenome assembly</text>
+  <text x="840" y="237" text-anchor="middle" class="boxtext">MEGAHIT builds contigs</text>
+  <text x="840" y="258" text-anchor="middle" class="small">Output: final.contigs.fa</text>
+  <path d="M595 228 C635 228 675 228 720 228" class="arrow"/>
+
+  <rect x="1025" y="175" width="240" height="105" fill="#fde2e1" class="box"/>
+  <text x="1145" y="210" text-anchor="middle" class="boxtitle">Read mapping</text>
+  <text x="1145" y="237" text-anchor="middle" class="boxtext">BBMap + Samtools</text>
+  <text x="1145" y="258" text-anchor="middle" class="small">Coverage per contig</text>
+  <path d="M960 228 C985 228 1000 228 1025 228" class="arrow"/>
+
+  <rect x="720" y="390" width="240" height="115" fill="#ede9fe" class="box"/>
+  <text x="840" y="425" text-anchor="middle" class="boxtitle">Genome binning</text>
+  <text x="840" y="452" text-anchor="middle" class="boxtext">MetaBAT groups contigs</text>
+  <text x="840" y="473" text-anchor="middle" class="boxtext">using coverage + sequence</text>
+  <text x="840" y="493" text-anchor="middle" class="small">Output: MAGs</text>
+  <path d="M1145 280 C1145 337 840 335 840 390" class="arrow"/>
+
+  <rect x="1025" y="390" width="240" height="115" fill="#ede9fe" class="box"/>
+  <text x="1145" y="425" text-anchor="middle" class="boxtitle">MAG quality</text>
+  <text x="1145" y="452" text-anchor="middle" class="boxtext">CheckM estimates</text>
+  <text x="1145" y="473" text-anchor="middle" class="boxtext">completeness + contamination</text>
+  <text x="1145" y="493" text-anchor="middle" class="small">Can we trust the genomes?</text>
+  <path d="M960 448 C985 448 1000 448 1025 448" class="arrow"/>
+
+  <rect x="500" y="600" width="350" height="95" fill="#f3f4f6" class="box"/>
+  <text x="675" y="635" text-anchor="middle" class="boxtitle">Biological interpretation</text>
+  <text x="675" y="662" text-anchor="middle" class="boxtext">Compare taxonomic profiles, MAGs,</text>
+  <text x="675" y="683" text-anchor="middle" class="boxtext">quality metrics, and limitations</text>
+
+  <path d="M550 505 C550 555 610 560 650 600" class="dashed"/>
+  <path d="M1145 505 C1145 575 850 555 730 600" class="dashed"/>
+
+  <text x="200" y="555" text-anchor="middle" class="label">Read-based view</text>
+  <text x="1000" y="555" text-anchor="middle" class="label">Genome-resolved view</text>
+
+  <text x="675" y="730" text-anchor="middle" class="small">Core idea: every computational step should be linked to a biological question and an uncertainty.</text>
+</svg>
