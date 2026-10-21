@@ -1,6 +1,6 @@
-# 04 Taxonomic classification
+# Taxonomic classification with Kaiju: a one-hour practical.
 
-> **Estimated time:** 35–45 minutes
+> **Estimated time:** 45 minutes
 
 ---
 
@@ -35,7 +35,7 @@ Different taxonomic classifiers may produce slightly different results because t
 # Dataset
 
 Download the metagenomics dataset from this location: 
-https://carpentries-lab.github.io/metagenomics-workshop/data/index.html
+
 
 Unzip the 
 
