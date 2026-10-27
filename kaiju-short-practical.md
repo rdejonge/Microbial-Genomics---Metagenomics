@@ -24,6 +24,9 @@ Because protein sequences are generally more conserved than DNA sequences, Kaiju
 
 Today, Kraken2 is another widely used alternative.
 
+Further documentation about Kaiju can be found here:
+https://github.com/bioinformatics-centre/kaiju
+
 ---
 
 ```{note}
@@ -34,10 +37,9 @@ Different taxonomic classifiers may produce slightly different results because t
 
 # Dataset
 
-Download the metagenomics dataset from this location: 
+Download the metagenomics dataset from this location: https://surfdrive.surf.nl/s/SWgJiM4e5TxxikJ
 
-
-Unzip the 
+Unzip the file.
 
 The dataset contains paired-end Illumina sequencing reads.
 
@@ -111,8 +113,9 @@ Locate the first matched protein in the reference database.
 Identify
 
 - protein length;
-- alignment position;
-- location of your sequencing read.
+- alignment position (relative to the start and stop of the read);
+- location of your sequencing read (relative to the start and stop of the protein).
+- what is the protein and where is it from?
 
 ---
 
