@@ -1,6 +1,6 @@
 # 04 Taxonomic classification
 
-> **Estimated time:** 35–45 minutes
+> **Estimated time:** 60 minutes
 
 ---
 
