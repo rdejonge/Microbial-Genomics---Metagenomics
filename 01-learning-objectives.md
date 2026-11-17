@@ -88,7 +88,7 @@ What is the difference between a microbial isolate and a metagenome?
 ```
 
 ```{exercise}
-Why is DNA extracted directly from an environmental sample instead of culturing microorganisms first?
+Why is DNA extracted directly from an environmental sample different from culturing microorganisms first?
 ```
 
 ```{exercise}
