@@ -1,6 +1,6 @@
 # 06 Metagenome assembly
 
-> **Estimated time:** 40–50 minutes
+> **Estimated time:** 60 minutes
 
 ---
 
