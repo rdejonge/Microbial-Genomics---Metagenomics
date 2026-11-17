@@ -43,9 +43,9 @@ mkdir metagenomics
 
 cd metagenomics
 
-wget ...
+wget -O dataset.tar.bz2 https://surfdrive.surf.nl/files/index.php/s/tWv6fRJcZ4k4ToS/download
 
-tar ...
+tar -jxvf dataset.tar.bz2
 
 cd WGS-data
 ```
