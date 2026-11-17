@@ -1,6 +1,6 @@
 # 02 Shotgun metagenomics versus amplicon sequencing
 
-> **Estimated time:** 20 minutes
+> **Estimated time:** 10 minutes
 
 ---
 
