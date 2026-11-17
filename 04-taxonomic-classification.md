@@ -58,6 +58,11 @@ The dataset contains paired-end Illumina sequencing reads generated from a mock 
 
 For this practical the classification has already been performed because the reference database is very large.
 
+```bash
+wget -O kaiju.zip https://surfdrive.surf.nl/files/index.php/s/K3zSPXaYIwqMnkZ/download
+unzip kaiju.zip
+```
+
 The command that was executed is
 
 ```bash
