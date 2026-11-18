@@ -14,7 +14,8 @@ Genome binning attempts to reconstruct individual genomes by grouping contigs th
 
 ---
 
-<!-- Figure: GC-content versus coverage -->
+![image](https://github.com/user-attachments/assets/af32b9f5-1fe1-4180-a030-5f3f2ca01c71)
+
 
 # What information is used?
 
