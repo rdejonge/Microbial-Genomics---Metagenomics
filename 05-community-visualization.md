@@ -69,9 +69,7 @@ Open the generated HTML file (from Krona) in your browser.
 
 ---
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8abdb018-8dc4-482a-ac66-67c72f02c20a" />
-
-
+![Krona plot screenshot](https://github.com/user-attachments/assets/8abdb018-8dc4-482a-ac66-67c72f02c20a)
 Navigate through the taxonomic tree.
 
 Notice how relative abundances change as you zoom into different clades.
