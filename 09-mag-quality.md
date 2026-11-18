@@ -1,6 +1,6 @@
 # 09 MAG quality assessment
 
-> **Estimated time:** 40–50 minutes
+> **Estimated time:** 60-90 minutes
 
 ---
 
@@ -12,7 +12,7 @@ Genome binning produces candidate genomes called **Metagenome-Assembled Genomes 
 
 However, these are computational predictions rather than experimentally verified genomes. Before using a MAG for downstream analyses we must evaluate its quality.
 
-The most widely used software for this purpose is **CheckM**.
+The most widely used software for this purpose is [CheckM](https://ecogenomics.github.io/CheckM/).
 
 ---
 
