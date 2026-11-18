@@ -103,7 +103,8 @@ pileup.sh \
     out=cov.txt
 ```
 
-Convert to abundance table
+Inspect the cov.txt file. What are the different columns, which one do we need to obtain the per-contig abundance? 
+To convert to a compatible abundance table for later we use the below code generating abundance.txt.
 
 ```bash
 awk '{print $1"\t"$5}' cov.txt \
