@@ -34,8 +34,6 @@ As a result, reconstructed genomes may
 - contain sequences from multiple strains.
 
 ---
-Example of a CheckM analysis output. Some highly complete and clean bins/MAGs on the bottom, some worse ones towards the top.
-![image](https://github.com/user-attachments/assets/91dc1b4b-2ff1-4d7e-be8a-003cd5560221)
 
 # CheckM
 
@@ -73,6 +71,9 @@ Duplicated marker genes often indicate that contigs from different organisms hav
 Do duplicated marker genes originate from highly similar strains?
 
 This helps distinguish contamination from naturally occurring strain variation.
+
+Example of a CheckM analysis output. Some highly complete and clean bins/MAGs on the bottom, some worse ones towards the top.
+![image](https://github.com/user-attachments/assets/91dc1b4b-2ff1-4d7e-be8a-003cd5560221)
 
 ---
 
