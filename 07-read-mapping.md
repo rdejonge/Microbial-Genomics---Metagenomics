@@ -104,6 +104,38 @@ Discuss:
 
 Next we calculate per-contig coverage.
 
+> [!NOTE]
+> **Sequencing coverage and depth: what do they mean?**
+>
+> **Read depth** is the number of reads overlapping a particular base.
+> **Average coverage**, also called *fold coverage*, is the average depth
+> across a genome or target region. The terms “coverage” and “depth”
+> are often used interchangeably, so specify which measure you mean.
+>
+> **Breadth of coverage** is the percentage of bases covered by at least
+> one read, or by a specified minimum depth, such as ≥10 reads.
+>
+> **Calculating average coverage**
+>
+> C = (N × L) / G
+>
+> - **C** = average coverage (e.g. 30×)
+> - **N** = total number of individual reads
+> - **L** = average read length in base pairs
+> - **G** = genome or target-region size in base pairs
+>
+> **Example:** 500 million reads × 150 bp = 75 billion sequenced bases.
+> For a 3-billion-base genome, average coverage is 75 / 3 = **25×**.
+>
+> For paired-end sequencing, count both mates: 250 million read pairs
+> of 2 × 150 bp correspond to 500 million individual reads.
+>
+> This is a theoretical average. Actual depth varies across the genome,
+> and some reads may be filtered out or fail to align.
+> To measure depth and breadth, align reads to the reference and
+> calculate coverage from the resulting alignment.
+
+
 ```bash
 pileup.sh \
     in=megahit_sorted.bam \
