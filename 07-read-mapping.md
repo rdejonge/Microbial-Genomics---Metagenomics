@@ -40,7 +40,8 @@ bbmap.sh ref=final.contigs.fa
 
 ---
 
-# Mapping reads (note that we point to the reads that are now 1 folder up using the ../ ; see Unix Bash cheat sheets for tips/tricks f. example: https://devhints.io/bash)
+# Mapping reads*
+*(note that we point to the reads that are now 1 folder up using the ../ ; see Unix Bash cheat sheets for tips/tricks f. example: https://devhints.io/bash)
 
 ```bash
 bbmap.sh \
