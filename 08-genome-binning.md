@@ -67,7 +67,7 @@ Experiment with
 
 Can you visually identify clusters?
 
-These clusters often correspond to individual genomes.
+These clusters often correspond to individual genomes. Why?
 
 ---
 
@@ -81,12 +81,12 @@ Run
 runMetaBat.sh \
     -t 2 \
     final.contigs.fa \
-    megahit_sorted.bam
+    megahit_sorted.bam 
 ```
 
 MetaBAT combines coverage and sequence composition to assign contigs into putative genomes.
 
-The resulting bins are known as
+The resulting bins (which can be found in the folder just generated starting with _final.contigs.fa.metabat-bins2-_ are known as:
 
 **Metagenome-Assembled Genomes (MAGs).**
 
