@@ -29,7 +29,7 @@ Depending on the biological question, different taxonomic levels may be most inf
 
 ---
 
-# Creating a taxonomic table
+# Creating a taxonomic table (again, see https://github.com/bioinformatics-centre/kaiju for more details)
 
 ```bash
 kaiju2table \
@@ -57,7 +57,7 @@ Questions to consider
 
 Krona provides an interactive hierarchical representation of community composition.
 
-Generate the Krona input
+Generate the Krona input (study manual for exact command!)
 
 ```bash
 kaiju2krona ...
@@ -65,11 +65,12 @@ kaiju2krona ...
 ktImportText ...
 ```
 
-Open the generated HTML file in your browser.
+Open the generated HTML file (from Krona) in your browser.
 
 ---
 
-<!-- Figure: Krona screenshot -->
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8abdb018-8dc4-482a-ac66-67c72f02c20a" />
+
 
 Navigate through the taxonomic tree.
 
