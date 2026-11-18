@@ -90,12 +90,11 @@ High-quality MAGs generally have:
 
 # Running CheckM
 
-```{note}
 Don't forget to change the last but one parameter to the right metabat output directory. In my example pasted below, its _final.contigs.fa.metabat-bins2-20261118_114713_ .
 ![image](https://github.com/user-attachments/assets/b28623ad-72d8-4ae0-bcf7-abbbf166f371)
 
 Also, take care that all CheckM commands are sensitive to the position of arguments and inputs!
-```
+
 
 ```bash
 checkm lineage_wf \
