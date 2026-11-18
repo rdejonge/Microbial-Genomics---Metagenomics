@@ -14,6 +14,8 @@ However, these are computational predictions rather than experimentally verified
 
 The most widely used software for this purpose is [CheckM](https://ecogenomics.github.io/CheckM/).
 
+Nice video by Rob Edwards at San Diego [here](https://www.youtube.com/watch?v=sLtSDs3sh6k/).
+
 ---
 
 # Why do MAGs contain errors?
