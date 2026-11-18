@@ -114,7 +114,7 @@ Inspect the cov.txt file. What are the different columns, which one do we need t
 To convert to a compatible abundance table for later we use the below code generating abundance.txt.
 
 ```bash
-awk '{print $1"\t"$5}' cov.txt \
+cut -f1,2 cov.txt \
 | grep -v '^#' \
 > abundance.txt
 ```
