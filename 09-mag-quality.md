@@ -34,8 +34,8 @@ As a result, reconstructed genomes may
 - contain sequences from multiple strains.
 
 ---
-
-<!-- Figure: Good MAG versus contaminated MAG -->
+Example of a CheckM analysis output. Some highly complete and clean bins/MAGs on the bottom, some worse ones towards the top.
+![image](https://github.com/user-attachments/assets/91dc1b4b-2ff1-4d7e-be8a-003cd5560221)
 
 # CheckM
 
