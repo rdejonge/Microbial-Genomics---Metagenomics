@@ -102,6 +102,8 @@ Determine
 
 Why might some contigs remain unbinned?
 
+Are you able to connect the bins with some of your manually/visually identified clusters in the above exercise involving GC and coverage?
+
 ---
 
 ```{tip}
