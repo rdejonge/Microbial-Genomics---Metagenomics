@@ -34,17 +34,18 @@ Coverage becomes one of the strongest signals for separating genomes.
 Before reads can be aligned, BBMap (https://bbmap.org/docs/guides/bbmapguide) builds an index of the assembled contigs.
 
 ```bash
+cd megahit_out
 bbmap.sh ref=final.contigs.fa
 ```
 
 ---
 
-# Mapping reads
+# Mapping reads (note that we point to the reads that are now 1 folder up using the ../ ; see Unix Bash cheat sheets for tips/tricks f. example: https://devhints.io/bash)
 
 ```bash
 bbmap.sh \
-    in=read1.fq \
-    in2=read2.fq \
+    in=../read1.fq \
+    in2=../read2.fq \
     out=megahit.sam
 ```
 
