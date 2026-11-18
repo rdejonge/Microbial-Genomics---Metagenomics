@@ -1,6 +1,6 @@
 # 07 Read mapping and coverage
 
-> **Estimated time:** 30–40 minutes
+> **Estimated time:** 60 minutes
 
 ---
 
@@ -31,7 +31,7 @@ Coverage becomes one of the strongest signals for separating genomes.
 
 # Building the index
 
-Before reads can be aligned, BBMap builds an index of the assembled contigs.
+Before reads can be aligned, BBMap (https://bbmap.org/docs/guides/bbmapguide) builds an index of the assembled contigs.
 
 ```bash
 bbmap.sh ref=final.contigs.fa
