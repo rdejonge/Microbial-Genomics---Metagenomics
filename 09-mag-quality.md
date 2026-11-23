@@ -143,7 +143,8 @@ Could there be biological explanations other than contamination?
 
 ## Exercise 3
 
-Compare the MAG taxonomy with the organisms identified earlier using Kaiju.
+Compare the MAG taxonomy (from CheckM)* with the organisms identified earlier using Kaiju.
+*Use checkm tree_qa command to obtain more detailed taxonomic information about your bins
 
 Do both methods identify similar dominant organisms?
 
