@@ -20,11 +20,11 @@ The individual reference genomes and their list are in the same shared location:
 /science/projects/courses/B-MBIMIGE/B-MBIMIGE2024_data/metagenomics_ronnie/aux/references.txt
 ```
 
-These are genomes from the [Arabidopsis culture collection dataset](https://zenodo.org/records/10992416). No download or unpacking is needed. Work in your own directory and keep the shared files unchanged.
+These are genomes from the [Arabidopsis culture collection dataset](https://zenodo.org/records/10992416). No download or unpacking is needed. I would recommend created symbolic links to these files from your CWD.
 
 ## 1. Assemble, map and inspect the community
 
-Follow sections [06](06-metagenome-assembly.md), [07](07-read-mapping.md) and [08](08-genome-binning.md) of the main practical:
+Follow sections [06](06-metagenome-assembly.md), [07](07-read-mapping.md) and [08](08-genome-binning.md) of the main practical. Keep in mind this is a shared server. Be gentle with requested resources. Advice: maximum of 2 threads!
 
 1. Assemble the paired-end reads using **MEGAHIT**.
 2. Record total assembly length, number of contigs and N50.
@@ -51,7 +51,8 @@ Highlight the selected bin's contigs on your GC–abundance plot. Keep the >5,00
 **Questions:** Do these contigs form a coherent cluster? Does the contamination estimate support treating the bin as one genome?
 
 ## 3. Find candidate relatives using minimap2
-minimap2 documentation: https://github.com/lh3/minimap2
+minimap2 documentation: [minimap2](https://github.com/lh3/minimap2/)
+
 Use **minimap2** to align the selected bin to the combined culture collection reference file. Its sequence headers include the isolate name, for example `isolateA|contig1`, so you can identify the source genome of each match.
 
 In the command below, replace `COMBINED_REFERENCES.fna` with the path to the combined reference file:
@@ -61,12 +62,12 @@ In the command below, replace `COMBINED_REFERENCES.fna` with the path to the com
 ```
 
 ```bash
-minimap2 -x asm5 -c -N 50 -t 2 COMBINED_REFERENCES.fna selected_bin.fa > bin_matches.paf
+minimap2 -x asm5 -c -N 5 -t 2 COMBINED_REFERENCES.fna selected_bin.fa > bin_matches.paf
 ```
 
-The `asm5` preset is intended for closely related assemblies. `-c` requests base-level alignments, and `-N 50` allows up to 5 secondary alignments per query, helping retain alternative candidate genomes.
+The `asm5` preset is intended for closely related assemblies. `-c` requests base-level alignments, and `-N 5` allows up to 5 secondary alignments per query, helping retain alternative candidate genomes.
 
-Open the tab-separated PAF output in a spreadsheet:
+Open the tab-separated PAF output in a spreadsheet (or in your terminal):
 
 | Column | Meaning |
 | --- | --- |
@@ -82,9 +83,9 @@ Very similar reference genomes can be difficult to distinguish, and even retaine
 
 ## 4. Score the candidates using FastANI
 
-**FastANI** estimates average nucleotide identity (ANI) between genomes. Create a plain-text file named `candidate_genomes.txt`, containing the **absolute paths to the individual candidate genome FASTA files**, one per line, without a header.
+**FastANI** estimates average nucleotide identity (ANI) between genomes [FastANI](https://github.com/ParBliSS/FastANI). Create a plain-text file named `candidate_genomes.txt`, containing the **absolute paths to the individual candidate genome FASTA files**, one per line, without a header.
 
-Use the shared `references.txt` to find the filenames. Its relative paths refer to the shared `aux/` directory: an entry such as `references/Genomes/isolateA.fna` becomes `/nethome/jonge031/data/metagenomics_ronnie/aux/references/Genomes/isolateA.fna`.
+Use the shared `references.txt` to find the filenames and absolute paths.
 
 Compare your bin with the shortlisted genomes:
 
@@ -102,7 +103,7 @@ The output columns are:
 | 4 | Number of matching query fragments |
 | 5 | Total query fragments |
 
-Calculate the **query alignment fraction** as column 4 divided by column 5. Consider this alongside ANI: high identity across only a small fraction of a bin is weaker evidence than high identity across most of it. A missing comparison is not an ANI of zero.
+Calculate the **query alignment fraction** as column 4 divided by column 5. Consider this alongside ANI: high identity across only a small fraction of a bin is weaker evidence than high identity across most of it.
 
 **Questions:** Which candidate is the strongest match? Is the difference from the next-best candidate convincing? Can you identify one isolate, or only a group of closely related isolates?
 
@@ -116,7 +117,7 @@ Ignore self-comparisons. Are the candidate genomes themselves nearly identical? 
 
 ## 5. Is the selected bin sufficiently covered?
 
-Return to the reads mapped to the **whole MEGAHIT assembly** in step 1. Match the selected bin's contig identifiers to the per-contig depth table. Do not remap the reads only to this bin. Why?
+Return to the reads mapped to the **whole MEGAHIT assembly** in step 1. Match the selected bin's contig identifiers to the per-contig depth table. Do not remap the reads only to this bin. `Why?`
 
 Calculate the bin's **length-weighted mean depth**, using all its contigs, including those ≤5,000 bp and those with zero depth:
 
@@ -124,7 +125,7 @@ Calculate the bin's **length-weighted mean depth**, using all its contigs, inclu
 Mean bin depth = sum(contig length × mean contig depth) / sum(contig length)
 ```
 
-You can do this in a spreadsheet: multiply each contig's length by its depth, sum the products, and divide by the total bin length.
+You can do this in a spreadsheet or on bash using [awk](https://www.geeksforgeeks.org/linux-unix/awk-command-unixlinux-examples/): multiply each contig's length by its depth, sum the products, and divide by the total bin length.
 
 To put this coverage in context, calculate the length-weighted mean depth of the **whole assembly** in the same way, then report:
 
