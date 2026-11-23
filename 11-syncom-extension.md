@@ -9,15 +9,15 @@ We recently prepared an inoculum containing approximately **40 microorganisms** 
 The paired-end reads are on the course server:
 
 ```text
-/nethome/jonge031/data/metagenomics_ronnie/aux/Syncom31_synt_inoculum_R1.fastq.gz
-/nethome/jonge031/data/metagenomics_ronnie/aux/Syncom31_synt_inoculum_R2.fastq.gz
+/science/projects/courses/B-MBIMIGE/B-MBIMIGE2024_data/metagenomics_ronnie/aux/Syncom31_synt_inoculum_R1.fastq.gz
+/science/projects/courses/B-MBIMIGE/B-MBIMIGE2024_data/metagenomics_ronnie/aux/Syncom31_synt_inoculum_R2.fastq.gz
 ```
 
 The individual reference genomes and their list are in the same shared location:
 
 ```text
-/nethome/jonge031/data/metagenomics_ronnie/aux/references/
-/nethome/jonge031/data/metagenomics_ronnie/aux/references.txt
+/science/projects/courses/B-MBIMIGE/B-MBIMIGE2024_data/metagenomics_ronnie/aux/references/
+/science/projects/courses/B-MBIMIGE/B-MBIMIGE2024_data/metagenomics_ronnie/aux/references.txt
 ```
 
 These are genomes from the [Arabidopsis culture collection dataset](https://zenodo.org/records/10992416). No download or unpacking is needed. Work in your own directory and keep the shared files unchanged.
@@ -44,23 +44,27 @@ Prepare a **GC–abundance scatterplot for contigs longer than 5,000 bp**:
 
 Use **MetaBAT** to bin the assembly and **CheckM** to assess all bins, following sections [08](08-genome-binning.md) and [09](09-mag-quality.md).
 
-Select the **single bin with the highest CheckM completeness**. If several bins tie, choose the one with lower contamination. Record its original identifier, length, contig count, completeness and contamination. For the commands below, make a local copy named `selected_bin.fa`.
+Select the **single bin with the highest CheckM completeness**. Record its original identifier, length, contig count, completeness and contamination.
 
 Highlight the selected bin's contigs on your GC–abundance plot. Keep the >5,000 bp filter for this plot only.
 
-**Questions:** Do these contigs form a coherent cluster? Does the contamination estimate support treating the bin as one genome? The most complete bin is not necessarily the cleanest, so carry any concerns into your interpretation.
+**Questions:** Do these contigs form a coherent cluster? Does the contamination estimate support treating the bin as one genome?
 
 ## 3. Find candidate relatives using minimap2
-
+minimap2 documentation: https://github.com/lh3/minimap2
 Use **minimap2** to align the selected bin to the combined culture collection reference file. Its sequence headers include the isolate name, for example `isolateA|contig1`, so you can identify the source genome of each match.
 
-In the command below, replace `COMBINED_REFERENCES.fna` with the path to the combined reference file provided by the demonstrator. The individual-genome list `references.txt` is **not** a FASTA file and cannot be used in its place.
+In the command below, replace `COMBINED_REFERENCES.fna` with the path to the combined reference file:
+
+```bash
+~/data/metagenomics_ronnie/aux/references/combined.fna
+```
 
 ```bash
 minimap2 -x asm5 -c -N 50 -t 2 COMBINED_REFERENCES.fna selected_bin.fa > bin_matches.paf
 ```
 
-The `asm5` preset is intended for closely related assemblies. `-c` requests base-level alignments, and `-N 50` allows up to 50 secondary alignments per query, helping retain alternative candidate genomes.
+The `asm5` preset is intended for closely related assemblies. `-c` requests base-level alignments, and `-N 50` allows up to 5 secondary alignments per query, helping retain alternative candidate genomes.
 
 Open the tab-separated PAF output in a spreadsheet:
 
@@ -74,13 +78,13 @@ Open the tab-separated PAF output in a spreadsheet:
 
 Identify a small shortlist of candidate isolates, preferably **2–5**, supported by long alignments across several bin contigs. Use column 6 to group matches by isolate. Avoid choosing candidates from a single short conserved match or simply counting alignment rows.
 
-This is a candidate screen, not a definitive ranking. Very similar reference genomes can be difficult to distinguish, and even retained secondary alignments do not guarantee that every relevant relative appears. If there are no convincing matches, discuss this with a demonstrator before continuing.
+Very similar reference genomes can be difficult to distinguish, and even retained secondary alignments do not guarantee that every relevant relative appears.
 
 ## 4. Score the candidates using FastANI
 
 **FastANI** estimates average nucleotide identity (ANI) between genomes. Create a plain-text file named `candidate_genomes.txt`, containing the **absolute paths to the individual candidate genome FASTA files**, one per line, without a header.
 
-Use the shared `references.txt` to find the filenames. Its relative paths refer to the shared `aux/` directory: an entry such as `references/isolateA.fna` becomes `/nethome/jonge031/data/metagenomics_ronnie/aux/references/isolateA.fna`. Preserve any subfolders. Do not put the combined collection file in this list.
+Use the shared `references.txt` to find the filenames. Its relative paths refer to the shared `aux/` directory: an entry such as `references/Genomes/isolateA.fna` becomes `/nethome/jonge031/data/metagenomics_ronnie/aux/references/Genomes/isolateA.fna`.
 
 Compare your bin with the shortlisted genomes:
 
@@ -108,11 +112,11 @@ To help interpret close matches, also compare the candidate reference genomes **
 fastANI --ql candidate_genomes.txt --rl candidate_genomes.txt -t 2 -o candidates_ani.tsv
 ```
 
-Ignore self-comparisons. Are the candidate genomes themselves nearly identical? Explain how this affects confidence in assigning your bin to a particular isolate. Keep comparison direction consistent when reporting alignment fractions; their denominator is the query genome.
+Ignore self-comparisons. Are the candidate genomes themselves nearly identical? Explain how this affects confidence in assigning your bin to a particular isolate.
 
 ## 5. Is the selected bin sufficiently covered?
 
-Return to the reads mapped to the **whole MEGAHIT assembly** in step 1. Match the selected bin's contig identifiers to the per-contig depth table. Do not remap the reads only to this bin.
+Return to the reads mapped to the **whole MEGAHIT assembly** in step 1. Match the selected bin's contig identifiers to the per-contig depth table. Do not remap the reads only to this bin. Why?
 
 Calculate the bin's **length-weighted mean depth**, using all its contigs, including those ≤5,000 bp and those with zero depth:
 
@@ -128,7 +132,7 @@ To put this coverage in context, calculate the length-weighted mean depth of the
 Relative coverage = mean bin depth / mean assembly depth
 ```
 
-This ratio describes coverage relative to the assembled metagenome; it is **not** the organism's percentage abundance or fraction of cells. Also locate the bin's depth relative to the other clusters in your plot.
+This ratio describes coverage relative to the assembled metagenome. Also locate the bin's depth relative to the other clusters in your plot.
 
 For judging assembly adequacy, use the **absolute bin depth in ×**, not this ratio. As a practical benchmark, approximately **30–50× coverage** is often a useful starting point for short-read prokaryotic genome assembly. For context, [Illumina's bacterial de novo assembly technical note](https://support.illumina.com/documents/products/technotes/technote_denovo_assembly_ecoli.pdf) recommends at least 30–40× good-quality reads and demonstrates assembly at 50×. Treat this as a guide, not a universal threshold, particularly for a metagenome.
 
@@ -159,5 +163,3 @@ Finish with a short conclusion: **Which culture collection genome best matches y
 - [Culture collection genomes](https://doi.org/10.5281/zenodo.10992416)
 - [Minimap2 documentation](https://github.com/lh3/minimap2)
 - [FastANI documentation](https://github.com/ParBLiSS/FastANI)
-
-<!-- Instructor setup: make minimap2 and FastANI available. Supply the combined reference FASTA with isolate-prefixed contig identifiers and replace COMBINED_REFERENCES.fna in the command with its actual shared path before publishing. Keep the individual reference genomes and references.txt available at the paths above. -->
