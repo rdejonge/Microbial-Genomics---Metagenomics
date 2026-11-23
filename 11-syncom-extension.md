@@ -135,7 +135,7 @@ Relative coverage = mean bin depth / mean assembly depth
 
 This ratio describes coverage relative to the assembled metagenome. Also locate the bin's depth relative to the other clusters in your plot.
 
-For judging assembly adequacy, use the **absolute bin depth in ×**, not this ratio. As a practical benchmark, approximately **30–50× coverage** is often a useful starting point for short-read prokaryotic genome assembly. For context, [Illumina's bacterial de novo assembly technical note](https://support.illumina.com/documents/products/technotes/technote_denovo_assembly_ecoli.pdf) recommends at least 30–40× good-quality reads and demonstrates assembly at 50×. Treat this as a guide, not a universal threshold, particularly for a metagenome.
+For judging assembly adequacy, use the **absolute bin depth in ×**, not this ratio. As a practical benchmark, approximately **30–50× coverage** is often a useful starting point for short-read prokaryotic genome assembly. For context, [Illumina's bacterial de novo assembly technical note](https://support.illumina.com/documents/products/technotes/technote_denovo_assembly_ecoli.pdf) recommends at least 30–40× good-quality reads and demonstrates assembly at 50×.
 
 **Discuss:**
 
@@ -146,7 +146,7 @@ For judging assembly adequacy, use the **absolute bin depth in ×**, not this ra
 
 Remember that depth measured on recovered contigs does not tell you the depth of genomic regions that failed to assemble.
 
-## What to hand in
+## Summarizing
 
 Prepare a short report containing:
 
@@ -156,7 +156,8 @@ Prepare a short report containing:
 4. A small table of candidate reference genomes, ANI values and query alignment fractions, plus a brief interpretation of the reference-to-reference comparisons.
 5. Mean bin depth, mean assembly depth and relative coverage, with your assessment of whether coverage was adequate.
 
-Finish with a short conclusion: **Which culture collection genome best matches your bin, how certain is that identification, and how well was this genome recovered?** Include the commands you used.
+Finish with a short conclusion: **Which culture collection genome best matches your bin, how certain is that identification, and how well was this genome recovered?** Include the commands you used. 
+`To speed-up the discussion have these ready!` 
 
 ## Resources
 
