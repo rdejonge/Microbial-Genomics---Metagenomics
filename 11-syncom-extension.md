@@ -87,11 +87,14 @@ Very similar reference genomes can be difficult to distinguish, and even retaine
 
 Use the shared `references.txt` to find the filenames and absolute paths.
 
-Compare your bin with the shortlisted genomes:
+Compare your bin with the shortlisted genomes:*
 
 ```bash
+python3.11
 fastANI -q selected_bin.fa --rl candidate_genomes.txt -t 2 -o bin_ani.tsv
+python2.7
 ```
+*FastANI is available via python3.11 environment, many other tools used in the course via python2.7. We use the commands listed above to switch between these.
 
 The output columns are:
 
